@@ -6,7 +6,7 @@
 #    By: mahola <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/26 15:29:18 by mahola            #+#    #+#              #
-#    Updated: 2019/10/16 20:00:48 by mahola           ###   ########.fr        #
+#    Updated: 2019/10/16 20:26:45 by mahola           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,26 +25,34 @@ SOURCES = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		  ft_putendl_fd.c ft_putnbr_fd.c
 OBJECTS = $(SOURCES:.c=.o)
 
+BLUE = \033[34m
+GREEN = \033[32m
+YELLOW = \033[33m
+MAGENTA = \033[35m
+RED = \033[31m
+DEFAULT = \033[0m
+BOLD = \033[1m
+
 FLAGS = -Wall -Wextra -Werror -c
 
 all: $(NAME)
-	@echo "All done!"
+	@echo "$(GREEN)$(BOLD)All done!$(DEFAULT)"
 
 $(NAME): $(OBJECTS)
-	@echo "Building $(NAME) ..."
+	@echo "$(YELLOW)Building $(MAGENTA)$(BOLD)$(NAME) $(YELLOW)$(BOLD)...$(DEFAULT)"
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
 
 %.o: %.c
-	@echo "Compiling $(firstword $(subst ., ,$@)) ..."
+	@echo "$(YELLOW)Compiling $(BLUE)$(BOLD)$(firstword $(subst ., ,$@)) $(YELLOW)...$(DEFAULT)"
 	@gcc $(FLAGS) $< -o $@
 
 clean:
 	@/bin/rm -f $(OBJECTS)
-	@echo "Binaries cleaned!"
+	@echo "$(RED)$(BOLD)Binaries cleaned!$(DEFAULT)"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@echo "All cleaned!"
+	@echo "$(RED)$(BOLD)All cleaned!$(DEFAULT)"
 
 re: fclean all
