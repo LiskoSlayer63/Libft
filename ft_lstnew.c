@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mahola <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 16:09:40 by mahola            #+#    #+#             */
-/*   Updated: 2019/10/16 19:20:22 by mahola           ###   ########.fr       */
+/*   Created: 2019/10/16 18:46:04 by mahola            #+#    #+#             */
+/*   Updated: 2019/10/16 19:18:20 by mahola           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	size_t i;
+	t_list		*out;
 
-	i = 0;
-	while (s[i])
-		ft_putchar_fd(s[i++], fd);
+	if (!(out = (t_list*)malloc(sizeof(*out))))
+		return (NULL);
+	if (!content)
+	{
+		out->content = NULL;
+		out->content_size = 0;
+	}
+	else
+	{
+		if (!(out->content = malloc(content_size)))
+		{
+			free(out);
+			return (NULL);
+		}
+		ft_memcpy(out->content, content, content_size);
+		out->content_size = content_size;
+	}
+	out->next = NULL;
+	return (out);
 }
