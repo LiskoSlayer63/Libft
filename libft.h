@@ -6,7 +6,7 @@
 /*   By: mahola <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 02:53:35 by mahola            #+#    #+#             */
-/*   Updated: 2019/10/16 19:48:44 by mahola           ###   ########.fr       */
+/*   Updated: 2019/10/22 23:42:44 by mahola           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,14 @@ typedef struct		s_list
 }					t_list;
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
+
+/*
+** OWN STUFF
+*/
+
+int					ft_isspace(int c);
+int					ft_pow(int nbr, int pow);
+
+long				ft_powl(long nbr, int pow);
 
 #endif
