@@ -6,7 +6,7 @@
 /*   By: mahola <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 02:53:35 by mahola            #+#    #+#             */
-/*   Updated: 2019/10/22 23:42:44 by mahola           ###   ########.fr       */
+/*   Updated: 2019/10/23 00:54:42 by mahola           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,11 @@ t_list				*ft_lstnew(void const *content, size_t content_size);
 
 int					ft_isspace(int c);
 int					ft_pow(int nbr, int pow);
+int					ft_islower(int c);
+int					ft_isupper(int c);
 
 long				ft_powl(long nbr, int pow);
+
+char				*ft_strndup(const char *s1, size_t n);
 
 #endif
