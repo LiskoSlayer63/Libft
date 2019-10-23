@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_powl.c                                          :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mahola <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 23:26:23 by mahola            #+#    #+#             */
-/*   Updated: 2019/10/23 02:58:22 by mahola           ###   ########.fr       */
+/*   Created: 2019/10/23 02:33:10 by mahola            #+#    #+#             */
+/*   Updated: 2019/10/23 02:57:53 by mahola           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_powl(long nbr, int pow)
-{
-	int		i;
-	long	out;
+#include "libft.h"
 
-	if (!pow)
-		return (1);
-	i = 0;
-	out = nbr;
-	while (++i < pow)
-		out *= nbr;
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+{
+	t_list *out;
+	t_list *tmp;
+	t_list *new;
+
+	tmp = (*f)(lst);
+	if (!(new = ft_lstnew(tmp->content, tmp->content_size)))
+		return (NULL);
+	out = new;
+	while (lst->next)
+	{
+		tmp = (*f)(lst->next);
+		if (!(new->next = ft_lstnew(tmp->content, tmp->content_size)))
+			return (NULL);
+		lst = lst->next;
+		new = new->next;
+	}
 	return (out);
 }

@@ -6,7 +6,7 @@
 /*   By: mahola <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 18:46:04 by mahola            #+#    #+#             */
-/*   Updated: 2019/10/16 19:18:20 by mahola           ###   ########.fr       */
+/*   Updated: 2019/10/23 03:04:51 by mahola           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 {
 	t_list		*out;
 
-	if (!(out = (t_list*)malloc(sizeof(*out))))
+	if (!(out = (t_list*)malloc(sizeof(t_list))))
 		return (NULL);
 	if (!content)
 	{

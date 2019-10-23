@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_powl.c                                          :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mahola <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 23:26:23 by mahola            #+#    #+#             */
-/*   Updated: 2019/10/23 02:58:22 by mahola           ###   ########.fr       */
+/*   Created: 2019/10/23 02:22:11 by mahola            #+#    #+#             */
+/*   Updated: 2019/10/23 02:27:20 by mahola           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_powl(long nbr, int pow)
-{
-	int		i;
-	long	out;
+#include "libft.h"
 
-	if (!pow)
-		return (1);
-	i = 0;
-	out = nbr;
-	while (++i < pow)
-		out *= nbr;
-	return (out);
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+{
+	while (lst)
+	{
+		(*f)(lst);
+		lst = lst->next;
+	}
 }
